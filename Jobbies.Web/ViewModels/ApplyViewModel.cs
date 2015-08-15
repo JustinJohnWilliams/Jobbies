@@ -9,6 +9,8 @@ namespace Jobbies.Web.ViewModels
     {
         public int ListingId { get; set; }
 
+        public string SponsorName { get; set; }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }

@@ -23,8 +23,6 @@ namespace Jobbies.Web.Controllers
 
         public ActionResult Index()
         {
-            var sponsors = _repo.GetSponsors();
-
             var listings = _repo.GetListings();
 
             var vm = new JobsViewModel();
@@ -54,7 +52,13 @@ namespace Jobbies.Web.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(new ApplyViewModel { ListingId = listing.Id });
+            var sponsor = _repo.GetSponsor(listing.SponsorId);
+            if (sponsor == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View(new ApplyViewModel { ListingId = listing.Id, SponsorName = sponsor.Name });
         }
 
         [HttpPost]
