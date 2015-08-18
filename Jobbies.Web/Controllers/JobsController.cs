@@ -19,6 +19,7 @@ namespace Jobbies.Web.Controllers
         {
             _repo = new JobbiesRepository(_connectionString);
         }
+
         public ActionResult Index()
         {
             var listings = _repo.GetListings();
@@ -44,7 +45,6 @@ namespace Jobbies.Web.Controllers
             }
 
             vm.ListingSummary = sponsors.ToDictionary(d => d.Value.Name, d => listings.Count(c => c.SponsorId == d.Key));
-
 
             return View(vm);
         }

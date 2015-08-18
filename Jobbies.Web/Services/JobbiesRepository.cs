@@ -37,7 +37,7 @@ namespace Jobbies.Web.Services
 
         public List<Listing> GetListings(int sponsorId)
         {
-            var results = new List<Listing>();
+            List<Listing> results;
 
             using (JobbiesContext context = new JobbiesContext(_connectionString))
             {
@@ -56,7 +56,7 @@ namespace Jobbies.Web.Services
 
         public List<Listing> GetListings()
         {
-            var results = new List<Listing>();
+            List<Listing> results;
 
             using (JobbiesContext context = new JobbiesContext(_connectionString))
             {

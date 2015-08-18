@@ -9,7 +9,7 @@ namespace Jobbies.Web.Models
     [Table(Name = "dbo.Applicant")]
     public class Applicant
     {
-        [Column(IsPrimaryKey = true, UpdateCheck = UpdateCheck.Never)]
+        [Column(IsPrimaryKey = true, UpdateCheck = UpdateCheck.Never, IsDbGenerated = true)]
         public int Id { get; set; }
 
         [Column]
