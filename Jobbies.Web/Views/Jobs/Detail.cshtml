@@ -1,0 +1,75 @@
+﻿@using Jobbies.Web.Models
+@model DetailViewModel
+
+<div class="container">
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col s3 blue-grey lighten-5" style="margin-top: 10px">
+                    <ul class="collection with-header">
+                        <li class="collection-header">
+                            <h4>Summary</h4>
+                        </li>
+                        <li class="collection-item">
+                            <div>
+                                <span class="collection-label">Company</span>
+                                <span class="">@Model.SponsorName</span>
+                            </div>
+                        </li>
+                        <li class="collection-item">
+                            <div>
+                                <span class="collection-label">Position</span>
+                                <span class="">@Model.Title</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col s9">
+                    <div class="card  blue-grey lighten-5">
+                        <div class="card-content">
+                            <span class="card-title black-text">@Model.Title</span>
+                            <p>
+                                @Model.Description
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card  blue-grey lighten-5">
+                        <div class="card-content">
+                            <span class="card-title black-text">Apply</span>
+                            <form class="col s12" method="POST" action="@Url.Action("Apply")">
+                                @Html.Hidden("ListingId", Model.Id)
+                                @Html.Hidden("SponsorName", Model.SponsorName)
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <input id="FirstName" name="FirstName" type="text">
+                                        <label for="FirstName" class="">First Name</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <input id="LastName" name="LastName" type="text">
+                                        <label for="LastName" class="">Last Name</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="Email" name="Email" type="email">
+                                        <label for="Email" class="">Email</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="Phone" name="Phone" type="text">
+                                        <label for="Phone" class="">Phone (Optional)</label>
+                                    </div>
+                                </div>
+                                <button type="submit" id="download-button" class="btn-large waves-effect waves-light orange white-text">Apply</button>
+                            </form>
+                        </div>
+                        <div class="card-action">
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
