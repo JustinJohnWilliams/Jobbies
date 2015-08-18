@@ -12,11 +12,11 @@ namespace Jobbies.Web.ViewModels
         {
             ListingSummary = new Dictionary<string, int>();
 
-            Listings = new List<DetailViewModel>();
+            Listings = new List<Listing>();
         }
 
         public Dictionary<string, int> ListingSummary { get; set; }
 
-        public List<DetailViewModel> Listings { get; set; }
+        public List<Listing> Listings { get; set; }
     }
 }

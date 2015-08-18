@@ -1,0 +1,25 @@
+﻿.blue {
+	background-color: #1652a2 !important;
+}
+
+.orange-text {
+	color: #ff9412 !important;
+}
+
+.orange {
+	background-color: #ff9412 !important;
+}
+
+em.position {
+	margin: -10px 0 10px 0;
+	display: block;
+}
+
+.collection-label {
+	font-weight: bold;
+	display: block;
+}
+
+.material-icons {
+    font-size: inherit;
+}

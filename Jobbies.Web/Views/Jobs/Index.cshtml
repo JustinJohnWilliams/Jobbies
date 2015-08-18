@@ -1,0 +1,50 @@
+﻿@model JobsViewModel
+
+<div class="container">
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col s3 blue-grey lighten-5" style="margin-top: 10px">
+                    <ul class="nav">
+                        <li>
+                            <a href="">
+                                <div>
+                                    <span class="left">All</span>
+                                    <span class="right">(@Model.Listings.Count)</span>
+                                    <div style="clear: both"></div>
+                                </div>
+                            </a>
+                        </li>
+                        @foreach (var company in Model.ListingSummary.Keys)
+                        {
+                            <li>
+                                <a href="">
+                                    <div>
+                                        <span class="left">@company</span>
+                                        <span class="right">(@Model.ListingSummary[company])</span>
+                                        <div style="clear: both"></div>
+                                    </div>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="col s9">
+                    @foreach (var listing in Model.Listings)
+                    {
+                        <div class="card  blue-grey lighten-5">
+                            <div class="card-content">
+                                <span class="card-title black-text">@listing.SponsorName</span>
+                                <em class="position">@listing.Title</em>
+                                <p>@listing.Description</p>
+                            </div>
+                            <div class="card-action">
+                                <a class="btn-large waves-effect waves-light orange white-text" href="@Url.Action("Detail", new { listingId = listing.Id })" class="orange-text">Details</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  

@@ -12,74 +12,12 @@ namespace Jobbies.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public string ConnectionString = ConfigurationManager.ConnectionStrings["Jobbies"].ConnectionString;
-
-        public readonly JobbiesRepository _repo;
-
-        public HomeController()
-        {
-            _repo = new JobbiesRepository(ConnectionString);
-        }
-
         public ActionResult Index()
         {
-            var listings = _repo.GetListings();
-
-            var vm = new JobsViewModel();
-
-            foreach (var listing in listings)
-            {
-                vm.ListingSummary.Add(
-                    _repo.GetSponsor(
-                            listing.SponsorId).Name, 
-                            listings.Count(c => c.SponsorId == listing.SponsorId));
-            }
-
-            return View(vm);
+            return View();
         }
 
-        public ActionResult Apply(int? listingId)
-        {
-            if (listingId == null)
-            {
-                return RedirectToAction("Index");
-            }
-
-            var listing = _repo.GetListing(listingId.Value);
-
-            if (listing == null)
-            {
-                return RedirectToAction("Index");
-            }
-
-            var sponsor = _repo.GetSponsor(listing.SponsorId);
-            if (sponsor == null)
-            {
-                return RedirectToAction("Index");
-            }
-
-            return View(new ApplyViewModel { ListingId = listing.Id, SponsorName = sponsor.Name });
-        }
-
-        [HttpPost]
-        public ActionResult Apply(ApplyViewModel model)
-        {
-            if(!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-            _repo.Add(new Applicant
-                {
-                    ListingId = model.ListingId,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    Email = model.Email,
-                    Phone = model.Phone
-                });
-
-            return View(model);
-        }
+        
 
     }
 }
