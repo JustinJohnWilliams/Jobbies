@@ -16,8 +16,5 @@ namespace Jobbies.Web.Controllers
         {
             return View();
         }
-
-        
-
     }
 }
